@@ -17,7 +17,7 @@ class DoctorsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create doctor" do
     assert_difference('Doctor.count') do
-      post doctors_url, params: { doctor: { crm: @doctor.crm, crm_uf: @doctor.crm_uf, name: @doctor.name } }
+      post doctors_url, params: { doctor: { crm: "699541", crm_uf: "RJ", name: "Carlos Pacheco Gonzales" } }
     end
 
     assert_redirected_to doctor_url(Doctor.last)
