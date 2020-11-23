@@ -1,19 +1,20 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @patient.name %>
-</p>
+<h1>Informações do Paciente</h1>
+<div class="card mb-3 mt-5" style="max-width: 40%;">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <%= image_tag "default-user.png", width: "150" %>
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h4 class="card-title"><%= @patient.name %></h4>
+        <p class="card-text"><strong>Data de aniversario:</strong> <%= @patient.birth_date %></p>
+        <p class="card-text"><strong>Cpf: </strong><%= @patient.cpf %></p>
+      </div>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Birth date:</strong>
-  <%= @patient.birth_date %>
-</p>
-
-<p>
-  <strong>Cpf:</strong>
-  <%= @patient.cpf %>
-</p>
-
-<%= link_to 'Edit', edit_patient_path(@patient) %> |
-<%= link_to 'Back', patients_path %>
+<%= link_to 'Editar', edit_patient_path(@patient), class: "btn btn-lg btn-success text-white" %>
+<%= link_to 'Voltar', patients_path, class: "btn btn-lg btn-secondary text-white" %>
