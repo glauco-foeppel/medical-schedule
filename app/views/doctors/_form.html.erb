@@ -11,22 +11,28 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :crm %>
-    <%= form.text_field :crm %>
+    <%= form.text_field :crm, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :crm_uf %>
-    <%= form.text_field :crm_uf %>
+    <%= form.text_field :crm_uf, class: "form-control"%>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Cadastrar", class: "btn btn-lg btn-success text-white" %>
+    <%= link_to doctors_path, class: "btn btn-lg btn-secondary text-white" do %>
+      <i class="fas fa-edit"></i> Editar
+    <% end %>
+    <%= link_to @doctor, class: "btn btn-lg btn-secondary text-white" do %>
+      <i class="fas fa-eye"></i> Exibir
+    <% end %>
   </div>
 <% end %>

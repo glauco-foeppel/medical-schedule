@@ -1,19 +1,19 @@
 <p id="notice"><%= notice %></p>
+<h1>Informações do Médico</h1>
+<div class="card mb-3 mt-5" style="max-width: 40%;">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <%= image_tag "default-user.png", width: "150" %>
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h4 class="card-title"><%= @doctor.name %></h4>
+        <p class="card-text"><strong>CRM:</strong> <%= @doctor.crm %></p>
+        <p class="card-text"><strong>UF: </strong><%= @doctor.crm_uf %></p>
+      </div>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @doctor.name %>
-</p>
-
-<p>
-  <strong>Crm:</strong>
-  <%= @doctor.crm %>
-</p>
-
-<p>
-  <strong>Crm uf:</strong>
-  <%= @doctor.crm_uf %>
-</p>
-
-<%= link_to 'Edit', edit_doctor_path(@doctor) %> |
-<%= link_to 'Back', doctors_path %>
+<%= link_to 'Editar', edit_doctor_path(@doctor), class: "btn btn-lg btn-success text-white" %>
+<%= link_to 'Voltar', doctors_path, class: "btn btn-lg btn-secondary text-white" %>
