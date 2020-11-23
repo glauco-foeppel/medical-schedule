@@ -19,8 +19,8 @@
  @import '@fortawesome/fontawesome-free/scss/solid';
  @import '@fortawesome/fontawesome-free/scss/regular';
  @import '@fortawesome/fontawesome-free/scss/brands';
- @import '@fortawesome/fontawesome-free/scss/v4-shims'; 
-
+ @import '@fortawesome/fontawesome-free/scss/v4-shims';
+ @import "tempusdominus-bootstrap-4/src/sass/tempusdominus-bootstrap-4";
 
 
  .table-default{
@@ -53,4 +53,10 @@
 .table-default a:hover{
     color: #007bff;
     background-color: none;
+}
+
+.register-appointment{
+    padding: 10px;
+    background-color: #f3f3f3;
+    border-radius: 10px;
 }
