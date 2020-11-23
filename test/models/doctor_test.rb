@@ -17,20 +17,12 @@ class DoctorTest < ActiveSupport::TestCase
 
   test "should not valid without crm_uf attribute" do
     @doctor.crm_uf = nil
-    assert_not @doctor.save
+    assert_not @doctor.valid?
   end
 
-  # test "should not valid with crm and crm_uf exist" do
-  #   # # duplicate = @doctor
-  #   # # @doctor.save
-  #   # # assert_not duplicate.save
-
-  #   # assert_raises(ActiveRecord::RecordInvalid) do
-  #   #   c1 = @doctor
-  #   #   c1.save
-  #   #   c2 = @doctor
-  #   #   c2.save(validate: false)
-  #   # end
-
-  # end
+  test "should not valid with crm and crm_uf exist" do
+    duplicate = Doctor.new name: @doctor.name, crm: @doctor.crm, crm_uf: @doctor.crm_uf
+    @doctor.save
+    assert_not duplicate.save
+  end
 end
