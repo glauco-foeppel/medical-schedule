@@ -19,9 +19,13 @@ class DashboardController < ApplicationController
       @Doctors = Doctor.order(:name)
     end
 
-    @doctor_data = []
+    @doctor_data = {}
+    @doctor_data[:starts_at] = starts_at 
+    @doctor_data[:ends_at] = ends_at
+    @doctor_data[:data] = []
+
     @Doctors.each do |doctor|
-      @doctor_data << {
+      @doctor_data[:data] << {
         name: doctor.name, 
         total_appointment: doctor.appointments.where(starts_at: starts_at..ends_at).size, 
         total_patient: doctor.appointments.where(starts_at: starts_at..ends_at).distinct(:patient_id).count

@@ -4,14 +4,14 @@
             <div class="col m-1">
                 <div class="form-group">
                     <%= form.label "Medico" %>
-                    <%= select("", "doctor_id", Doctor.order(:name).collect {|p| [ p.name, p.id ] }, { include_blank: false, :prompt => "Selecione o medico" }, class: "form-control") %>
+                    <%= select("", "doctor_id", Doctor.order(:name).collect {|p| [ p.name, p.id ] }, { include_blank: false, :prompt => "Selecione o medico", disable: true }, class: "form-control") %>
                 </div>
             </div>
             <div class="col m-1">
                 <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
                     <%= form.label "Inicio" %>
                     <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
-                        <%= form.text_field :starts_at, class: "form-control datetimepicker-input", 'data-target': "#datetimepicker1" %>
+                        <%= form.text_field :starts_at, value: doctor_data[:starts_at].strftime("%d/%m/%Y") , class: "form-control datetimepicker-input", 'data-target': "#datetimepicker1" %>
                             <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
                             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                         </div>  
@@ -22,7 +22,7 @@
                 <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
                     <%= form.label "Final" %>
                     <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
-                        <%= form.text_field :ends_at, class: "form-control datetimepicker-input", 'data-target': "#datetimepicker2" %>
+                        <%= form.text_field :ends_at, value: doctor_data[:ends_at].strftime("%d/%m/%Y"), class: "form-control datetimepicker-input", 'data-target': "#datetimepicker2" %>
                            <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
                             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                         </div>  
