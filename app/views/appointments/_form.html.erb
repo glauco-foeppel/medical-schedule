@@ -16,19 +16,19 @@
       <div class="col m-1">
         <div class="form-group">
           <%= form.label "Paciente" %>
-          <%= select(:appointment, "patient_id", Patient.order(:name).collect {|p| [ p.name, p.id ] }, { include_blank: true }, class: "form-control") %>
+          <%= select(:appointment, "patient_id", Patient.order(:name).collect {|p| [ p.name, p.id ] }, { include_blank: false, :prompt => "Selecione o paciente" }, class: "form-control") %>
         </div>
       </div>
       <div class="col m-1">
         <div class="form-group">
-          <%= form.label "Medico" %>
-          <%= select(:appointment, "doctor_id", Doctor.order(:name).collect {|p| [ p.name, p.id ] }, { include_blank: true }, class: "form-control") %>
+          <%= form.label "Médico" %>
+          <%= select(:appointment, "doctor_id", Doctor.order(:name).collect {|p| [ p.name, p.id ] }, { include_blank: false, :prompt => "Selecione o médico" }, class: "form-control") %>
         </div>
       </div>
       <div class="col m-1">
         <div class="form-group">
-          <%= form.label "Horario" %>
-          <%= select(:appointment, "starts_at", range_hours.map{|date| date.strftime("%H:%M")}, { include_blank: true }, class: "form-control") %>
+          <%= form.label "Horário" %>
+          <%= select(:appointment, "starts_at", range_hours.map{|date| date.strftime("%H:%M")}, { include_blank: false, :prompt => "Selecione o horário" }, class: "form-control") %>
         </div>
       </div>
     </div>
