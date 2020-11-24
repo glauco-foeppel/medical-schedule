@@ -10,49 +10,33 @@
       </ul>
     </div>
   <% end %>
-
+  
   <div class="register-appointment">
-    <div class="row">
-      <div class="col m-1">
-        <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
-          <%= form.label "Inicio" %>
-          <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
-            <%= form.text_field :starts_at, class: "form-control datetimepicker-input", 'data-target': "#datetimepicker1" %>
-            <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
-              <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-            </div>  
-          </div>
-        </div>
-      </div>
-      <div class="col m-1">
-        <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
-          <%= form.label "Final" %>
-          <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
-            <%= form.text_field :ends_at, class: "form-control datetimepicker-input", 'data-target': "#datetimepicker2" %>
-            <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
-              <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-            </div>  
-          </div>
-        </div>
-      </div>
-    </div>
     <div class="row">
       <div class="col m-1">
         <div class="form-group">
           <%= form.label "Paciente" %>
-          <%= select(:appointment, "patient_id", Patient.all.collect {|p| [ p.name, p.id ] }, { include_blank: true }, class: "form-control") %>
+          <%= select(:appointment, "patient_id", Patient.order(:name).collect {|p| [ p.name, p.id ] }, { include_blank: true }, class: "form-control") %>
         </div>
       </div>
       <div class="col m-1">
         <div class="form-group">
           <%= form.label "Medico" %>
-          <%= select(:appointment, "doctor_id", Doctor.all.collect {|p| [ p.name, p.id ] }, { include_blank: true }, class: "form-control") %>
+          <%= select(:appointment, "doctor_id", Doctor.order(:name).collect {|p| [ p.name, p.id ] }, { include_blank: true }, class: "form-control") %>
+        </div>
+      </div>
+      <div class="col m-1">
+        <div class="form-group">
+          <%= form.label "Horario" %>
+          <%= select(:appointment, "starts_at", range_hours.map{|date| date.strftime("%H:%M")}, { include_blank: true }, class: "form-control") %>
         </div>
       </div>
     </div>
+  
     <div class="row">
       <div class="col text-right mr-1">
         <%= form.submit "Agendar", class: "btn btn-success" %>
+        <%= link_to 'Voltar', appointments_path, class: "btn btn-secondary" %>
       </div>
     </div>
   </div>
