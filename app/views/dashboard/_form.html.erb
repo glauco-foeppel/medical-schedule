@@ -4,7 +4,7 @@
             <div class="col m-1">
                 <div class="form-group">
                     <%= form.label "Medico" %>
-                    <%= select("", "doctor_id", Doctor.order(:name).collect {|p| [ p.name, p.id ] }, { include_blank: true }, class: "form-control") %>
+                    <%= select("", "doctor_id", Doctor.order(:name).collect {|p| [ p.name, p.id ] }, { include_blank: false,:prompt => "Selecione o medico" }, class: "form-control") %>
                 </div>
             </div>
             <div class="col m-1">

@@ -17,7 +17,7 @@
   </div>
 </div>
 
-<%= render 'form', doctors: @doctors %>
+<%= render 'form' %>
 
 <%= %>
 
@@ -31,11 +31,11 @@
   </thead>
 
   <tbody>
-    <% @doctors.each do |doctor| %>
+    <% @doctor_data.each do |doctor| %>
       <tr>
-        <td><%= doctor.name %></td>
-        <td><%= doctor.appointments.size %></td>
-        <td><%= doctor.appointments.distinct(:patient_id).count %></td>
+        <td><%= doctor[:name] %></td>
+        <td><%= doctor[:total_appointment] %></td>
+        <td><%= doctor[:total_patient] %></td>
       </tr>
     <% end %>
   </tbody>

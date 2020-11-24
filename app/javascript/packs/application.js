@@ -13,19 +13,23 @@ require("tempusdominus-bootstrap-4")
 
 $(function () {
     $('#datetimepicker1').datetimepicker({
-        locale: 'pt-br'
+        locale: 'pt-br',
+        format: 'L',
+        defaultDate: new Date()
     });
 
     $('#datetimepicker2').datetimepicker({
         locale: 'pt-br',
-        useCurrent: false
+        format: 'L',
+        defaultDate: new Date()
     });
-    $("#datetimepicker1").on("change.datetimepicker", function (e) {
-        $('#datetimepicker2').datetimepicker('minDate', e.date);
-    });
-    $("#datetimepicker2").on("change.datetimepicker", function (e) {
-        $('#datetimepicker1').datetimepicker('maxDate', e.date);
-    });
+    
+    // $("#datetimepicker1").on("change.datetimepicker", function (e) {
+    //     $('#datetimepicker2').datetimepicker('minDate', e.date);
+    // });
+    // $("#datetimepicker2").on("change.datetimepicker", function (e) {
+    //     $('#datetimepicker1').datetimepicker('maxDate', e.date);
+    // });
 });
 
 // Uncomment to copy all static images under ../images to the output folder and reference
