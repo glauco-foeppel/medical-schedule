@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/faker-ruby/faker.git
+  revision: aaf047c58731790cb35e0a91cf708bd9af4431b4
+  branch: master
+  specs:
+    faker (2.15.0)
+      i18n (>= 1.6, < 2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -61,10 +69,6 @@ GEM
     bindex (0.8.1)
     bootsnap (1.5.1)
       msgpack (~> 1.0)
-    bootstrap4-datetime-picker-rails (0.3.1)
-      jquery-rails (~> 4.2, >= 4.2.0)
-      moment-timezone-rails (~> 1.0)
-      momentjs-rails (>= 2.10.5, <= 3.0.0)
     builder (3.2.4)
     byebug (11.1.3)
     capybara (3.33.0)
@@ -86,10 +90,6 @@ GEM
       concurrent-ruby (~> 1.0)
     jbuilder (2.10.1)
       activesupport (>= 5.0.0)
-    jquery-rails (4.4.0)
-      rails-dom-testing (>= 1, < 3)
-      railties (>= 4.2.0)
-      thor (>= 0.14, < 2.0)
     listen (3.3.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -105,10 +105,6 @@ GEM
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.14.2)
-    moment-timezone-rails (1.0.0)
-      momentjs-rails (>= 2.10.5, <= 3.0.0)
-    momentjs-rails (2.20.1)
-      railties (>= 3.1)
     msgpack (1.3.3)
     nio4r (2.5.4)
     nokogiri (1.10.10)
@@ -211,9 +207,9 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap (>= 1.4.2)
-  bootstrap4-datetime-picker-rails
   byebug
   capybara (>= 2.15)
+  faker!
   jbuilder (~> 2.7)
   listen (~> 3.2)
   puma (~> 4.1)
