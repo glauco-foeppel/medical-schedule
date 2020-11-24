@@ -43,6 +43,6 @@ class AppointmentsControllerTest < ActionDispatch::IntegrationTest
       delete appointment_url(@appointment)
     end
 
-    assert_redirected_to appointments_url
+    assert_redirected_to dashboard_index_path
   end
 end

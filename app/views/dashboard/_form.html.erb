@@ -1,0 +1,39 @@
+<%= form_with url: "/dashboard/index", method: :post, local: true do |form| %>
+    <div class="register-appointment">
+        <div class="row">
+            <div class="col m-1">
+                <div class="form-group">
+                    <%= form.label "Medico" %>
+                    <%= select("", "doctor_id", Doctor.order(:name).collect {|p| [ p.name, p.id ] }, { include_blank: true }, class: "form-control") %>
+                </div>
+            </div>
+            <div class="col m-1">
+                <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+                    <%= form.label "Inicio" %>
+                    <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+                        <%= form.text_field :starts_at, class: "form-control datetimepicker-input", 'data-target': "#datetimepicker1" %>
+                            <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                        </div>  
+                    </div>
+                </div>
+            </div>
+            <div class="col m-1">
+                <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
+                    <%= form.label "Final" %>
+                    <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
+                        <%= form.text_field :ends_at, class: "form-control datetimepicker-input", 'data-target': "#datetimepicker2" %>
+                           <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
+                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                        </div>  
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col m-1 text-right">
+                <%= form.submit "Filtrar", class: "btn btn-info" %>
+            </div>
+        </div>
+    </div>
+<% end %>
