@@ -7,7 +7,7 @@ class AppointmentsControllerTest < ActionDispatch::IntegrationTest
 
   test "should get index" do
     get appointments_url
-    assert_response :success
+    assert_redirected_to new_appointment_path
   end
 
   test "should get new" do
@@ -20,7 +20,7 @@ class AppointmentsControllerTest < ActionDispatch::IntegrationTest
       post appointments_url, params: { appointment: { doctor_id: @appointment.doctor_id, ends_at: @appointment.ends_at, patient_id: @appointment.patient_id, starts_at: @appointment.starts_at } }
     end
 
-    assert_redirected_to appointment_url(Appointment.last)
+    assert_redirected_to new_appointment_path(Appointment.last)
   end
 
   test "should show appointment" do
@@ -35,7 +35,7 @@ class AppointmentsControllerTest < ActionDispatch::IntegrationTest
 
   test "should update appointment" do
     patch appointment_url(@appointment), params: { appointment: { doctor_id: @appointment.doctor_id, ends_at: @appointment.ends_at, patient_id: @appointment.patient_id, starts_at: @appointment.starts_at } }
-    assert_redirected_to appointment_url(@appointment)
+    assert_redirected_to new_appointment_path
   end
 
   test "should destroy appointment" do
@@ -43,6 +43,6 @@ class AppointmentsControllerTest < ActionDispatch::IntegrationTest
       delete appointment_url(@appointment)
     end
 
-    assert_redirected_to dashboard_index_path
+    assert_redirected_to new_appointment_path
   end
 end
