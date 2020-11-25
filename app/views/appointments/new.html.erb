@@ -1,3 +1,56 @@
+<% if notice %>
+    <div class="alert alert-success" role="alert">
+        <%= notice %>
+    </div>
+<% end %>
 <h1>Novo Agendamento</h1>
+<div class="register-appointment">
+    <%= render 'form', appointment: @appointment, appointments: @appointments %>
+</div>
 
-<%= render 'form', appointment: @appointment %>
+<div>
+    <table class="table table-default mt-3 mb-5">
+    <thead>
+        <tr class="">
+            <th colspan="6" class="bg-info">Agenda do dia <%= @appointments[:date_filter].to_datetime.strftime("%d/%m/%Y") %></th>
+        </tr>
+        <tr>
+            <th>Horarios</th>
+            <th>Paciente</th>
+            <th>Medico</th>
+            <th colspan="2"></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% @appointments[:data].each do |appointment| %>
+            <% if appointment[:data] != nil %>
+                <tr>
+                    <td><%= appointment[:data].starts_at.strftime("%H:%M") %></td>
+                    <td><%= appointment[:data].patient.name %></td>
+                    <td><%= appointment[:data].doctor.name%></td>
+                    <td width=10>
+                    <%= link_to edit_appointment_path(appointment[:data]) do %>
+                        <i class="fas fa-edit"></i>
+                    <% end %>  
+                    </td>
+                    <td width=10>
+                    <%= link_to appointment[:data], method: :delete, data: { confirm: 'Are you sure?' } do %>
+                        <i class="far fa-trash-alt"></i>
+                    <% end %>  
+                    </td>        
+                </tr>
+            <% else %>
+                <tr>
+                    <td><%= appointment[:date].strftime("%H:%M") %></td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td colspan="2" width=10 class="text-right">
+                        <%= link_to 'Agendar', schedule_path(date: appointment[:date]), class: "btn btn-primary btn-sm text-white" %>
+                    </td>
+                </tr>
+            <% end %>
+        <% end %>
+    </tbody>
+    </table>
+</div>

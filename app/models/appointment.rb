@@ -6,4 +6,5 @@ class Appointment < ApplicationRecord
   validates :ends_at, presence: true
   validates :patient_id, presence: true
   validates :doctor_id, presence: true
+  validates :starts_at, uniqueness: true
 end

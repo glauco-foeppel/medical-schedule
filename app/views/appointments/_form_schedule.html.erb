@@ -1,0 +1,41 @@
+<%= form_with(model: appointment, local: true) do |form| %>
+    <% if appointment.errors.any? %>
+        <div id="error_explanation" class="alert alert-danger" role="alert">
+            <h3><%= pluralize(appointment.errors.count, "error") %> prohibited this appointment from being saved:</h3>
+
+            <ul>
+                <% appointment.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+    <div class="row">
+        <div class="col m-1">
+            <%= "Agendamento para o dia #{appointment[:starts_at].strftime("%d/%m/%Y")} as #{appointment[:starts_at].strftime("%H:%M")}" %>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col m-1">
+        <div class="form-group">
+            <%= form.label "Paciente" %>
+            <%= select(:appointment, "patient_id", Patient.order(:name).collect {|p| [ p.name, p.id ] }, { include_blank: false, :prompt => "Selecione o paciente" }, class: "form-control") %>
+        </div>
+        </div>
+        <div class="col m-1">
+        <div class="form-group">
+            <%= form.label "Médico" %>
+            <%= select(:appointment, "doctor_id", Doctor.order(:name).collect {|p| [ p.name, p.id ] }, { include_blank: false, :prompt => "Selecione o médico" }, class: "form-control") %>
+            <%= form.hidden_field :starts_at %>
+        </div>
+        </div>
+    </div>
+  
+    <div class="row">
+        <div class="col text-right mr-1">
+        <%= form.submit "Agendar", class: "btn btn-success" %>
+        <%= link_to 'Voltar', new_appointment_path, class: "btn btn-secondary" %>
+        </div>
+    </div>
+<% end %>

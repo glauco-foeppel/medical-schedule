@@ -10,26 +10,27 @@ require("@rails/activestorage").start()
 require("channels")
 require("moment/locale/ja")
 require("tempusdominus-bootstrap-4")
+$(document).on('turbolinks:load', function() {
+    $(function () {
+        $('#datetimepicker1').datetimepicker({
+            locale: 'pt-br',
+            format: 'L',
+            defaultDate: new Date()
+        });
 
-$(function () {
-    $('#datetimepicker1').datetimepicker({
-        locale: 'pt-br',
-        format: 'L',
-        defaultDate: new Date()
+        $('#datetimepicker2').datetimepicker({
+            locale: 'pt-br',
+            format: 'L',
+            defaultDate: new Date()
+        });
+        
+        // $("#datetimepicker1").on("change.datetimepicker", function (e) {
+        //     $('#datetimepicker2').datetimepicker('minDate', e.date);
+        // });
+        // $("#datetimepicker2").on("change.datetimepicker", function (e) {
+        //     $('#datetimepicker1').datetimepicker('maxDate', e.date);
+        // });
     });
-
-    $('#datetimepicker2').datetimepicker({
-        locale: 'pt-br',
-        format: 'L',
-        defaultDate: new Date()
-    });
-    
-    // $("#datetimepicker1").on("change.datetimepicker", function (e) {
-    //     $('#datetimepicker2').datetimepicker('minDate', e.date);
-    // });
-    // $("#datetimepicker2").on("change.datetimepicker", function (e) {
-    //     $('#datetimepicker1').datetimepicker('maxDate', e.date);
-    // });
 });
 
 // Uncomment to copy all static images under ../images to the output folder and reference

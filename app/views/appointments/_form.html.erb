@@ -1,42 +1,22 @@
-<%= form_with(model: appointment, local: true) do |form| %>
-  <% if appointment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(appointment.errors.count, "error") %> prohibited this appointment from being saved:</h2>
-
-      <ul>
-        <% appointment.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-  
-  <div class="register-appointment">
+<%= form_with(url: "/appointments/new", local: true) do |form| %>
+  <div>
     <div class="row">
-      <div class="col m-1">
-        <div class="form-group">
-          <%= form.label "Paciente" %>
-          <%= select(:appointment, "patient_id", Patient.order(:name).collect {|p| [ p.name, p.id ] }, { include_blank: false, :prompt => "Selecione o paciente" }, class: "form-control") %>
-        </div>
-      </div>
-      <div class="col m-1">
-        <div class="form-group">
-          <%= form.label "Médico" %>
-          <%= select(:appointment, "doctor_id", Doctor.order(:name).collect {|p| [ p.name, p.id ] }, { include_blank: false, :prompt => "Selecione o médico" }, class: "form-control") %>
-        </div>
-      </div>
-      <div class="col m-1">
-        <div class="form-group">
-          <%= form.label "Horário" %>
-          <%= select(:appointment, "starts_at", range_hours.map{|date| date.strftime("%H:%M")}, { include_blank: false, :prompt => "Selecione o horário" }, class: "form-control") %>
+      <div class="col-4 m-1">
+        <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
+          <%= form.label "Data da consulta" %>
+          <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
+            <%= form.text_field "date", value: appointments[:date_filter].to_datetime.strftime("%d/%m/%Y"), class: "form-control datetimepicker-input", 'data-target': "#datetimepicker2" %>
+            <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
+              <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+            </div>
+          </div>  
         </div>
       </div>
     </div>
-  
     <div class="row">
-      <div class="col text-right mr-1">
-        <%= form.submit "Agendar", class: "btn btn-success" %>
-        <%= link_to 'Voltar', appointments_path, class: "btn btn-secondary" %>
+      <div class="col mt-1 mr-1">
+        <%= form.label "" %>
+        <%= form.submit "Buscar data", class: "btn btn-success" %>
       </div>
     </div>
   </div>
