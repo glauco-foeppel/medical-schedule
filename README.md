@@ -5,7 +5,7 @@
 - ruby '2.7.0'
 - rails '6.0.3'
 
-* Configurações
+#### Configurações
 - Efetuar o download da aplicacao 
 - no diretorio da aplicação e execulte o comando `bundle install`
 - Em seguida `rails db:create` `rails db:migrate` `rails db:seed` para criação do banco de dados e popular com dados de teste
