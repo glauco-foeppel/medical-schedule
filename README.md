@@ -1,24 +1,19 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+#### Micro sistema de agendamento de consultas medicas para fins de teste.
 
-Things you may want to cover:
+- ruby '2.7.0'
+- rails '6.0.3'
 
-* Ruby version
+* Configurações
+- Efetuar o download da aplicacao 
+- no diretorio da aplicação e execulte o comando `bundle install`
+- Em seguida `rails db:create` `rails db:migrate` `rails db:seed` para criação do banco de dados e popular com dados de teste
+- A aplicação esta configurada para utilizar SqLite para fins de estudo
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+#### Funcionalidades e melhorias futuras
+- Aumentar cobertura de testes
+- Adicionar login e senha de acesso
+- Migrar o front para utilização de Vue ou React
+- Melhorar o dashboard
+- Colocar a aplicação em um container (Docker)
